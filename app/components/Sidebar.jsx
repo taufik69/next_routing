@@ -14,7 +14,7 @@ const Sidebar = ({ docs }) => {
           {roots.map((rootNode) => (
             <li class="relative" key={rootNode.id}>
               <Link
-                href={`/docs/${rootNode.id}`}
+                href={`/docscontent/${rootNode.id}`}
                 aria-current="page"
                 class="flex justify-between gap-2 py-1 pl-4 pr-3 text-sm text-zinc-900 transition dark:text-white"
               >
@@ -25,7 +25,7 @@ const Sidebar = ({ docs }) => {
                   {nonRootsObjGroup[rootNode.id].map((subNode) => (
                     <li class="relative ml-5" key={subNode.id}>
                       <Link
-                        href={`/docs/${rootNode.id}/${subNode.title}`}
+                        href={`/docscontent/${rootNode.id}/${subNode.id}`}
                         aria-current="page"
                         class="flex justify-between gap-2 py-1 pl-4 pr-3 text-sm text-zinc-900 transition dark:text-white"
                       >

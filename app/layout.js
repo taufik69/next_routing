@@ -11,6 +11,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   const allDocument = getDocuments();
+
   return (
     <html lang="en">
       <body className={inter.className}>

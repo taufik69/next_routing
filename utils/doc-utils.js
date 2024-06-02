@@ -5,7 +5,7 @@ export function getDocementByCatagory(docs, catagory) {
 
 export function getDocementByauthor(docs, author) {
   const authorResult = docs.filter((doc) => doc.author === author);
-
+  console.log(authorResult);
   return authorResult;
 }
 

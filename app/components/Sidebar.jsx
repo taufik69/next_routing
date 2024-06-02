@@ -8,6 +8,7 @@ import {
   getDocementByauthor,
   getDocementBytag,
 } from "@/utils/doc-utils";
+import { root } from "postcss";
 
 const Sidebar = ({ docs }) => {
   const [roots, setroots] = useState([]);
@@ -29,7 +30,17 @@ const Sidebar = ({ docs }) => {
     const roots = matchdocs.filter((doc) => !doc.parent);
     const nonRoots = matchdocs.filter((doc) => doc.parent);
     const nonRootsObjGroup = Object.groupBy(nonRoots, ({ parent }) => parent);
-    console.log(nonRootsObjGroup);
+
+    const nonRootsKey = Reflect.ownKeys(nonRootsObjGroup);
+    nonRootsKey.forEach((key) => {
+      const foundInRoots = roots.find((root) => root.id === key);
+      // console.log(foundInRoots);
+      if (!foundInRoots) {
+        const foundInDocs = docs.find((doc) => doc.id == key);
+        roots.push(foundInDocs);
+        // console.log(foundInDocs);
+      }
+    });
     setroots([...roots]);
     setnonroots({ ...nonRootsObjGroup });
   }, [pathname]);
